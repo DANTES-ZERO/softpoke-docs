@@ -29,7 +29,7 @@ AI agent skills that can install, bake and tune for you are in `Extras/AgentSkil
 
 ## Links
 
-* Publisher: DANTES-ZERO - [PUBLISHER URL]
-* Online documentation: [DOCS URL]
-* Support: [SUPPORT URL]
+* Publisher: DANTES-ZERO - https://github.com/DANTES-ZERO
+* Online documentation: https://github.com/DANTES-ZERO/softpoke-docs
+* Support: https://github.com/DANTES-ZERO/softpoke-docs/issues
 

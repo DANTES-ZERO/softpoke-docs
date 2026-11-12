@@ -117,7 +117,7 @@ Baked data uses the `.spk` format version SPK1 with optional blocks. Data from a
 
 ## Support
 
-* Support: [SUPPORT URL]. Please send: the SoftPoke and engine versions, your GPU and driver, `Saved/Logs/<Project>.log` (the `LogSoftPoke` lines), and for bake problems the files `manifest.json` and `quality_report.json` from the bake work folder. Do not attach models you have no right to share. The `softpoke-ops` skill can assemble a support report for you.
-* Online documentation: [DOCS URL]. Publisher: [PUBLISHER URL].
+* Support: https://github.com/DANTES-ZERO/softpoke-docs/issues. Please send: the SoftPoke and engine versions, your GPU and driver, `Saved/Logs/<Project>.log` (the `LogSoftPoke` lines), and for bake problems the files `manifest.json` and `quality_report.json` from the bake work folder. Do not attach models you have no right to share. The `softpoke-ops` skill can assemble a support report for you.
+* Online documentation: https://github.com/DANTES-ZERO/softpoke-docs. Publisher: https://github.com/DANTES-ZERO.
 * Support covers the unmodified plugin and the supported matrix (Windows 64, UE 5.8, D3D12 SM6, NVIDIA RTX validated, adult humanoid characters). It does not include custom bakes.
 
