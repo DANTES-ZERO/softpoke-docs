@@ -1,0 +1,19 @@
+# Licences
+
+> SoftPoke 1.0.0 | [Index](Index.md)
+
+* **SoftPoke itself:** Copyright (c) DANTES-ZERO. Distributed through Fab under the Fab End User License Agreement (the **Personal** or **Professional** licence tier you chose on the listing).
+* **Third-party notices:** [`Licenses/THIRD_PARTY_NOTICES.md`](../Licenses/THIRD_PARTY_NOTICES.md) is the authoritative list. In short:
+  * The plugin's compiled code contains no third-party code or libraries. It uses Unreal Engine modules under the Unreal Engine EULA.
+  * The bake tool sources in `Tools/Bake/` are original code, plus one prebuilt helper, `ufbx_dump.exe`, built from the **ufbx** library (MIT or public domain). Its licence text is `Tools/Bake/tools/ufbx_dump/LICENSE_ufbx`.
+  * The Python packages that the **Set up** button downloads (NumPy, SciPy, PyPardiso with Intel MKL, pytetwild / fTetWild, and for the optional GPU path CuPy and NVIDIA's CUDA libraries, among others) are installed by you from the Python package index under their own licences. They are **not** redistributed with SoftPoke. None of them is GPL or LGPL. Some have terms of their own (for example MPL-2.0 for fTetWild; Intel and NVIDIA runtime licences), which apply to your copy.
+  * The webcam tracker sources in `Tools/Webcam/` are original code. Its Python packages (MediaPipe Apache-2.0, OpenCV wheels Apache-2.0, NumPy BSD-3 and their dependencies, pinned in `Tools/Webcam/requirements.lock`) and the MediaPipe model files (Apache-2.0) are downloaded by you on your own computer and are **not** redistributed with SoftPoke. None of the packages the tracker requires is GPL. The Windows OpenCV wheels contain an FFmpeg library under LGPL-2.1 that OpenCV loads for video files; it comes inside the wheel from the Python package index, and SoftPoke neither ships nor modifies it. The list with licences is in `Licenses/THIRD_PARTY_NOTICES.md`.
+  * The built-in webcam tracker ships two Google MediaPipe hand models (`Resources/Models/*.onnx`, Apache-2.0, converted from TensorFlow Lite to ONNX, weights unchanged). Licence text: `Licenses/LICENSE_Apache-2.0_MediaPipe_models.txt`. They run in the engine plugin NNERuntimeORT; SoftPoke ships no ONNX Runtime binaries.
+  * Conventions only, no code: the 21-point hand landmark order of MediaPipe, ARKit blendshape names, OpenXR hand tracking through the engine.
+* **Your own content:** characters you bake stay yours; the baked data is derived from your mesh. Check the licence of every model you use (VRM / VRoid models have their own terms about modification and redistribution) and do not redistribute baked data of a model whose licence forbids it.
+* **The VR Template hands** are Epic content and are not shipped with SoftPoke.
+* **The sample content** (`Content/SoftPokeSample/`: an adult sample character with hands and strand hair, the baked data, two demo maps) is described in [`Licenses/SAMPLE_PROVENANCE.md`](../Licenses/SAMPLE_PROVENANCE.md): the character was made with Charakuru (by Nano) with the author's permission, the hands are from MakeHuman (CC0), the hair is the publisher's own, and the source images and 3D mesh were made with the help of generative AI (the Fab listing carries the *Created with AI* tag). The sample contains no MetaHuman data and no Epic template content. It is there to demonstrate SoftPoke; adult characters only.
+
+## Your characters and baked data
+
+SoftPoke contains no MetaHuman meshes, textures or face poses (the sample skeleton uses MetaHuman-compatible bone names). The only character in the package is the sample character described above. A MetaHuman (or any other character) that you use belongs to its own licence: for MetaHumans, the terms of Epic Games that apply to your engine version. Data that you bake from a character (the `.spk` files, the body assets `SPB_*`) is derived from that character: keep it in your own project and share it only as far as the licence of the character permits.
