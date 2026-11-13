@@ -6,8 +6,8 @@ Status of this file: SoftPoke 1.0.0, reviewed 2026-11-02, updated 2026-11-12.
 
 The package (`Source/SoftPokeRuntime`, `Source/SoftPokeEditor`, `Shaders/`, `Content/`) is original code. The audit of 2026-10-13 found:
 
-* No third-party source code, headers, libraries, binaries or fonts inside the plugin, except the two MediaPipe hand models listed below (Apache-2.0, data files). The sample content in `Content/SoftPokeSample/` (a sample character with hands and hair, baked data and demo maps) has its own provenance note: `SAMPLE_PROVENANCE.md` (includes the AI-content disclosure and the permission of the author of Charakuru).
-* No `ThirdParty/` folder and no `.lib` / `.dll` shipped (the plugin is distributed as source; Fab builds code plugins for each engine version, or the engine tooling does on the user's machine). The only executable is the bake tool helper `Tools/Bake/tools/ufbx_dump/ufbx_dump.exe` (ufbx, MIT or public domain), described below.
+* No third-party source code, headers, libraries, binaries or fonts inside the plugin, except the ufbx library source in `Tools/Bake/tools/ufbx_dump/` (MIT or public domain, see "ufbx" below) and the two MediaPipe hand models listed below (Apache-2.0, data files). The sample content in `Content/SoftPokeSample/` (a sample character with hands and hair, baked data and demo maps) has its own provenance note: `SAMPLE_PROVENANCE.md` (includes the AI-content disclosure and the permission of the author of Charakuru).
+* No `ThirdParty/` folder and no `.lib` / `.dll` shipped (the plugin is distributed as source; Fab builds code plugins for each engine version, or the engine tooling does on the user's machine). **No executable is shipped** (no `.exe`). The FBX reader of the bake tool, `ufbx_dump`, is shipped as source only and is built by the user (see "ufbx" below).
 * No MetaHuman meshes, textures or face poses. The sample skeleton was re-authored with Unreal Mannequin / MetaHuman-compatible bone names (its root bone is named `metahuman_base_skel`), but it contains no MetaHuman asset data. The face driver outputs ARKit-named animation curves; connecting them to a face rig is done in the user's own project with the user's own assets.
 * No data derived from GPL / AGPL / LGPL software.
 
@@ -29,7 +29,13 @@ The plugin is compiled against Unreal Engine 5.8 modules (Core, Engine, RenderCo
 
 ## Separate downloads (not part of the plugin package)
 
-If the webcam tracker or the bake tool is distributed next to the plugin, they have their own notice files and are installed by the user (for example through `pip`). They are NOT covered by this file. Their dependencies, with the licences found during the 2026-10-13 review: MediaPipe (Apache-2.0), OpenCV wheels (Apache-2.0, bundled FFmpeg is LGPL), NumPy / SciPy / PyPardiso (BSD-3), Numba / llvmlite (BSD-2), fTetWild / pytetwild (MPL-2.0), Intel MKL / oneTBB runtime (Intel Simplified Software License / Apache-2.0), ufbx (MIT or public domain), Python (PSF). Nothing in this list is linked into the Unreal plugin binaries. The plugin package ships the bake tool sources in Tools/Bake, including the prebuilt ufbx_dump.exe (ufbx, MIT or public domain; its licence text is Tools/Bake/tools/ufbx_dump/LICENSE_ufbx); the other packages above are installed by the user (pip) and are not shipped.
+If the webcam tracker or the bake tool is distributed next to the plugin, they have their own notice files and are installed by the user (for example through `pip`). They are NOT covered by this file. Their dependencies, with the licences found during the 2026-10-13 review: MediaPipe (Apache-2.0), OpenCV wheels (Apache-2.0, bundled FFmpeg is LGPL), NumPy / SciPy / PyPardiso (BSD-3), Numba / llvmlite (BSD-2), fTetWild / pytetwild (MPL-2.0), Intel MKL / oneTBB runtime (Intel Simplified Software License / Apache-2.0), Python (PSF). Nothing in this list is linked into the Unreal plugin binaries. The plugin package ships the bake tool sources in Tools/Bake, including the source of the ufbx library (see "ufbx" below); the packages above are installed by the user (pip) and are not shipped.
+
+## ufbx (third-party source included in the package)
+
+* `Tools/Bake/tools/ufbx_dump/ufbx.c` and `ufbx.h`: the ufbx FBX loader library, Copyright (c) 2020 Samuli Raivio, MIT or public domain (your choice). Unmodified third-party source. Licence text: `Tools/Bake/tools/ufbx_dump/LICENSE_ufbx`. Source: https://github.com/ufbx/ufbx
+* `Tools/Bake/tools/ufbx_dump/ufbx_dump.c`: SoftPoke's own small command line program (original code) that uses ufbx to write the raw body file of the bake tool.
+* No executable is shipped. The reader is only used to bake from a raw `.fbx` file outside Unreal (`ab_pipeline.py --raw body.fbx`); the user builds it once with one compiler command, see `Tools/Bake/tools/ufbx_dump/BUILD.md`. Baking from a skeletal mesh asset in Unreal or from a VRM file does not use it. It is not part of the Unreal plugin binaries.
 
 ## Webcam tracker (Tools/Webcam): packages and models fetched on the user's PC
 

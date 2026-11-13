@@ -90,6 +90,7 @@ Cook for **Windows, DirectX 12 (SM6)**. Before cooking: the skeletal mesh asset 
 * The Bake panel (editor only) starts the `python.exe` that you set in Project Settings > SoftPoke Bake Tool, for **Set up** and for bakes; pip then downloads packages ([Bake Your Own Character](BakeYourOwnCharacter.md)).
 * `SoftPokeTrackerLink` can start the optional Python webcam tracker with the Python that you give it when the game starts, and stops it when the game ends. Off by default (`bLaunchTracker`).
 * The plugin listens for hand data on UDP `127.0.0.1:9763` (`UdpBindAddress`). Only if you switch the touch events on it also runs a WebSocket server on `127.0.0.1:9764` and/or posts a webhook to this PC ([Touch events](TouchEvents.md)).
+* No executable (`.exe`) is shipped in the package, and the plugin starts none of its own. The Bake panel works from the skeletal mesh asset in Unreal. Only if you bake from a raw `.fbx` file outside Unreal do you need the small FBX reader `ufbx_dump`, which you build once from the source in `Tools/Bake/tools/ufbx_dump/` (instructions: `BUILD.md` there); nothing in the plugin starts it for you.
 * The plugin never connects to the internet by itself ([FAQ](ChangelogFaq.md#faq)).
 
 ## Uninstall

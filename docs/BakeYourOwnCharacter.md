@@ -44,6 +44,8 @@ What you get:
 
 Go through this before the first bake. A "no" is a fix in your modelling tool or in Unreal, or a reason to stop.
 
+**Input route.** The Bake panel bakes a skeletal mesh asset that is already in your project (a `.vrm` goes in through a VRM importer plugin first). For an `.fbx` file, import it into Unreal and bake the skeletal mesh asset: no extra tool is needed. The command line tool can also read a raw `.fbx` outside Unreal, but that needs the small reader `ufbx_dump`, which is shipped as source only (no `.exe`) and which you build once: see `Tools/Bake/tools/ufbx_dump/BUILD.md`. The panel never uses it.
+
 **Character**
 
 * [ ] Adult humanoid proportions (an adult head-to-body ratio, normal limb length).
